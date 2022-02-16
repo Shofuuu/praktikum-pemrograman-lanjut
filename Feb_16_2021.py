@@ -1,5 +1,12 @@
 #!/usr/bin/python3
 
+"""
+SOAL
+Pilih salah satu editor yang sesuai dengan kebutuhan anda dan cobalah program “Hello World”.
+Screen shot hasil dari program “Hello World!” , dan jelaskan keuntungan dan kelemahan dari
+Editor tersebut. 
+"""
+
 # example 1
 print('hello world')
 
