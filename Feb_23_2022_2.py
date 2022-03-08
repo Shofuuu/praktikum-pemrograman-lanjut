@@ -16,9 +16,14 @@ dan tebak3 untuk menampung 3 kesempatan tebakan user.
 import random
 
 print('Tebak angka dari 5-8:')
-for retry in range(3):
+for retry in range(4):
     rand_number = random.randint(5, 8)
 
+    if retry > 2:
+        print('Tebakan sudah habis!')
+        break
+
+    print('Tebakan ke-', retry + 1)
     guessed_number = int(input('Masukkan tebakan: '))
     if guessed_number == rand_number:
         print('Tebakan tepat!')
@@ -26,6 +31,4 @@ for retry in range(3):
     else:
         print('Tebakan salah!')
         print('yang benar adalah', rand_number)
-        print('Tebakan ke-', retry + 1)
-
-print('Tebakan sudah habis!')
+    print()
