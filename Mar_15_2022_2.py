@@ -14,7 +14,6 @@
 
 hotel = []
 building = []
-floor = []
 
 def render_hotel():
     for x in range(3):
@@ -24,10 +23,8 @@ def render_hotel():
     print()
 
     for z in range(3):
-        for y in range(15):
-            for x in range(20):
-                print('│', '▓' if hotel[z][y][x] == 1 else '░', end='', sep='')
-            print('\n' if y%3 == 2 else ' ', end='')
+        for y in range(300):
+            print('│', '▓' if hotel[z][y] == 1 else '░', '\n' if y%30 == 29 else ' ', end='', sep='')
 
     for x in range(3):
         print('══'*20, end=' ')
@@ -35,10 +32,8 @@ def render_hotel():
 
 if __name__ == '__main__':
     for z in range(3):
-        for y in range(15):
-            for x in range(20):
-                floor.append(0)
-            building.append(floor)
+        for y in range(300):
+            building.append(0)
         hotel.append(building)
 
     msg = ['Selamat Datang', '[contoh] booking gedung A lantai 15 kamar 8 -> A 15 8']
@@ -54,5 +49,4 @@ if __name__ == '__main__':
         lantai = int(lantai)
         kamar = int(kamar)
 
-        hotel[ord(gedung)-65][lantai-1][kamar-1] = 1
-        print(hotel)
+        # hotel[ord(gedung)-65][(lantai-1)*(kamar*10)] = 1
