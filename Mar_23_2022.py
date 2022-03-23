@@ -1,8 +1,5 @@
 #!/usr/bin/python3
 
-from ast import Try
-
-
 def draw_table(dict_data):
     dict_key = list(dict_data.keys())
     dict_value = list(dict_data.values())
