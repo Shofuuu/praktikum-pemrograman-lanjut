@@ -46,15 +46,13 @@ if __name__ == '__main__':
         while total > 0:
             key_vegetables = input('  Nama sayur ['+str(max_total - total)+']: ')
             key_vegetables = key_vegetables.capitalize()
+            last_key = ''
 
             if key_vegetables not in dict_vegetables_prices.keys():
                 print('  Sayur tidak ada di daftar harga!')
             else:
                 value_vegetables = int(input('  Jumlah: '))
-                if key_vegetables in dict_vegetables_user.keys():
-                    dict_vegetables_user[key_vegetables] += value_vegetables
-                else:
-                    dict_vegetables_user.update({str(key_vegetables + ' ' + str(value_vegetables)): value_vegetables*dict_vegetables_prices[key_vegetables]})
+                dict_vegetables_user.update({str(key_vegetables + ' ' + str(value_vegetables)): value_vegetables*dict_vegetables_prices[key_vegetables]})
                 total -= 1
         
         key_str_merge = ''
