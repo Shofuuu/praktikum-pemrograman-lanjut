@@ -14,22 +14,25 @@ def draw_table(dict_data):
             longest_word[1] = len(str_dict_val)
     
     longest_word[0] += 2
-    longest_word[1] += 8
+    longest_word[1] += 2
 
     for x in range(len(dict_key)):
-        str_dict_val = ('Rp' + str('{:,}'.format(dict_value[x]*1000)))
         print('+', '-'*longest_word[0], '+', sep='', end='')
         print('-'*longest_word[1], '+', sep='')
         print('| ', dict_key[x], ' '*(longest_word[0] + (longest_word[0]-len(dict_key[x]))), '\b'*(longest_word[0]+1), sep='', end='')
-        print('| ', str_dict_val, ' '*(longest_word[1] + (longest_word[1]-len(str_dict_val))), '\b'*(longest_word[1]+1), '|', sep='')
+        if type(dict_value[x]) == int or type(dict_value[x]) == float:
+            str_dict_val = ('Rp' + str('{:,}'.format(dict_value[x]*1000)))
+            print('| ', str_dict_val, ' '*(longest_word[1] + (longest_word[1]-len(str_dict_val))), '\b'*(longest_word[1]+1), '|', sep='')
+        else:
+            print('| ', dict_value[x], ' '*(longest_word[1] + (longest_word[1]-len(dict_value[x]))), '\b'*(longest_word[1]+1), '|', sep='')
 
         if x == len(dict_key)-1:
             print('+', '-'*longest_word[0], '+', sep='', end='')
             print('-'*longest_word[1], '+', sep='')
 
 if __name__ == '__main__':
-    dict_vegetables_prices = {'Bayam': 1.5, 'Terong': 2, 'Kubis': 3, 'Labu': 4, 'Brokoli': 4.5}
-    dict_merged = {}
+    dict_vegetables_prices = {'Jenis Sayur': 'Harga Sayur', 'Bayam': 1.5, 'Terong': 2, 'Kubis': 3, 'Labu': 4, 'Brokoli': 4.5}
+    dict_merged = {'Barang Belanjaan': 'Total yang Harus di Bayar'}
     draw_table(dict_vegetables_prices)
 
     while True:
