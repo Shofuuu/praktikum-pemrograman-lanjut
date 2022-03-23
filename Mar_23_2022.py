@@ -12,7 +12,7 @@ def draw_table(dict_data):
         str_dict_val = str(dict_value[i])
         if len(str_dict_val) > longest_word[1]:
             longest_word[1] = len(str_dict_val)
-    
+
     longest_word[0] += 2
     longest_word[1] += 2
 
@@ -54,14 +54,14 @@ if __name__ == '__main__':
                 value_vegetables = int(input('  Jumlah: '))
                 dict_vegetables_user.update({str(key_vegetables + ' ' + str(value_vegetables)): value_vegetables*dict_vegetables_prices[key_vegetables]})
                 total -= 1
-        
+
         key_str_merge = ''
         val_num_total = 0
         for key in dict_vegetables_user.keys():
             key_str_merge += key + (', ' if key != list(dict_vegetables_user.keys())[-1] else '')
         for val in dict_vegetables_user.values():
             val_num_total += val
-        
+
         val_num_total = val_num_total - (val_num_total * (
             0.10 if val_num_total > 20 else(
                 0.15 if val_num_total > 50 else(
