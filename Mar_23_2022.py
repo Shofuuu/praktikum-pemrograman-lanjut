@@ -1,5 +1,8 @@
 #!/usr/bin/python3
 
+from ast import Try
+
+
 def draw_table(dict_data):
     dict_key = list(dict_data.keys())
     dict_value = list(dict_data.values())
@@ -36,7 +39,12 @@ if __name__ == '__main__':
     draw_table(dict_vegetables_prices)
 
     while True:
-        total = int(input('\nAda berapa jenis sayur (0 ahiri program)? '))
+        try:
+            total = int(input('\nAda berapa jenis sayur (0 ahiri program)? '))
+        except:
+            print('\n[ERROR] Input harus berupa angka!')
+            continue
+
         dict_vegetables_user = {}
         max_total = total
 
@@ -51,7 +59,11 @@ if __name__ == '__main__':
             if key_vegetables not in dict_vegetables_prices.keys():
                 print('  Sayur tidak ada di daftar harga!')
             else:
-                value_vegetables = int(input('  Jumlah: '))
+                try:
+                    value_vegetables = int(input('  Jumlah: '))
+                except:
+                    print('[ERROR] Input harus berupa angka!')
+                    continue
                 dict_vegetables_user.update({str(key_vegetables + ' ' + str(value_vegetables)): value_vegetables*dict_vegetables_prices[key_vegetables]})
                 total -= 1
 
@@ -63,9 +75,9 @@ if __name__ == '__main__':
             val_num_total += val
 
         val_num_total = val_num_total - (val_num_total * (
-            0.10 if val_num_total > 20 else(
+            0.20 if val_num_total > 100 else(
                 0.15 if val_num_total > 50 else(
-                    0.20 if val_num_total > 100 else 0
+                    0.10 if val_num_total > 20 else 0
                 )
             )
         ))
