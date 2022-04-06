@@ -2,10 +2,6 @@
 # UTS April 6 2022
 # Muhammad Shofuwan Anwar (21/483339/SV/20142)
 
-# calulator interpreter
-from tkinter import N
-
-
 def parse_op_from_str(str_data):
     operator_ch = ('+', '-', '*', '/', '%')
     data_op = []
@@ -38,21 +34,37 @@ def parse_num_from_str(str_data):
     return data_num
 
 def process_op_and_num(operator_list, number_list):
-    result = []
+    result = 0
+    is_first_op = True
 
     try:
-        # Calculate the number list depending on the operator list
-        for x in range((len(operator_list)*2)-1):
-            if operator_list[x] == '+':
-                result.append(number_list[x] + number_list[x+1])
-            elif operator_list[x] == '-':
-                result.append(number_list[x] - number_list[x+1])
-            elif operator_list[x] == '*':
-                result.append(number_list[x] * number_list[x+1])
-            elif operator_list[x] == '/':
-                result.append(number_list[x] / number_list[x+1])
-            elif operator_list[x] == '%':
-                result.append(number_list[x] % number_list[x+1])
+        # Calculate number_list by operator_list
+        for i in range(len(operator_list)):
+            if is_first_op:
+                if operator_list[i] == '+':
+                    result = number_list[i] + number_list[i+1]
+                elif operator_list[i] == '-':
+                    result = number_list[i] - number_list[i+1]
+                elif operator_list[i] == '*':
+                    result = number_list[i] * number_list[i+1]
+                elif operator_list[i] == '/':
+                    result = number_list[i] / number_list[i+1]
+                elif operator_list[i] == '%':
+                    result = number_list[i] % number_list[i+1]
+
+                is_first_op = False
+                i += 1
+            else:
+                if operator_list[i] == '+':
+                    result += number_list[i]
+                elif operator_list[i] == '-':
+                    result -= number_list[i]
+                elif operator_list[i] == '*':
+                    result *= number_list[i]
+                elif operator_list[i] == '/':
+                    result /= number_list[i]
+                elif operator_list[i] == '%':
+                    result %= number_list[i]
 
     except ZeroDivisionError:
         print('Error: Zero Division')
@@ -65,6 +77,7 @@ def process_op_and_num(operator_list, number_list):
 
 if __name__ == '__main__':
     str_param = input('> ') # input string
+    str_param = str_param.replace(' ', '') # remove all spaces
 
     operator_list = parse_op_from_str(str_param)
     number_list = parse_num_from_str(str_param)
