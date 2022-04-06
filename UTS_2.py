@@ -65,6 +65,8 @@ def process_op_and_num(operator_list, number_list):
                     result /= number_list[i]
                 elif operator_list[i] == '%':
                     result %= number_list[i]
+            
+            print(result)
 
     except ZeroDivisionError:
         print('Error: Zero Division')
