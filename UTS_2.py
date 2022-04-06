@@ -81,7 +81,6 @@ if __name__ == '__main__':
 
     operator_list = parse_op_from_str(str_param)
     number_list = parse_num_from_str(str_param)
-    print(number_list)
     result = process_op_and_num(operator_list, number_list)
 
     print(str_param, '=', result)
