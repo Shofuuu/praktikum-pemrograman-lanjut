@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 
+import time
+
 def draw_table(dict_data):
     dict_key = list(dict_data.keys())
     dict_value = list(dict_data.values())
