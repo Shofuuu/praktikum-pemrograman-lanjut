@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+from Apr_20_2022_Module import check_taxes
 
 def check_usr_login(usr_in, pwd_in):
     # read user.txt file
@@ -37,38 +38,26 @@ def member_discount(is_member):
     else:
         return 0
 
-def check_taxes(tax_type):
-    try:
-        if tax_type.lower() == 'pribadi':
-            return 0.1
-        elif tax_type.lower() == 'perusahaan':
-            return 0.5
-        elif tax_type.lower() == 'restoran':
-            return 0.05
-        else:
-            return 0
-    except AttributeError:
-        print("[check_taxes] The tax type is not valid string")
-        exit(1)
-
 def main_program():
     list_total_price = []
-    list_index = 0
 
     while True:
+        print(
+            "1. Mie Ayam\t\tRp12.0000\n" "2. Mie Goreng\t\tRp10.0000\n"
+            "3. Nasi Goreng\t\tRp8.0000\n" "4. Nasi Uduk\t\tRp7.0000\n"
+            "5. Es Teh\t\tRp2.0000\n"
+        )
+
         try:
-            list_total_price.append(int(input("[main_program] Price : ")))
-            
-            if list_total_price[list_index] < 0:
-                print("[main_program] Price cannot be negative")
-                list_total_price.pop()
-                continue
-            elif list_total_price[list_index] == 0:
+            qty_price = input("[main_program] Quantity, Price : ")
+
+            if qty_price.isdigit() and int(qty_price) == 0:
                 break
 
-            list_index += 1
+            qty_price = qty_price.split(',')
+            list_total_price.append(int(qty_price[0]) * int(qty_price[1]))
         except ValueError:
-            print("[main_program] The price is not valid integer")
+            print("[main_program] Invalid input")
             exit(1)
     
     total_price = summary_price(list_total_price) * 1.0
