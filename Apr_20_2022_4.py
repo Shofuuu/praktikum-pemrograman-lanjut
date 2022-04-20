@@ -90,8 +90,7 @@ def main_program():
     print(" (discount Rp.{:,})".format(member_discount(True if member == 'Y' else False) * old_price) if member_discount(True if member == 'Y' else False) != 0 else "")
 
     tax_type = str(input("\n[main_program] Tax type Pribadi(P) or Perusahaan(U): ")).upper()
-    if tax_type == 'P': tax_type = 'pribadi'
-    elif tax_type == 'U': tax_type = 'perusahaan'
+    tax_type = ('pribadi' if tax_type == 'P' else ('perusahaan' if tax_type == 'U' else 'any'))
 
     old_price = total_price
     total_price = (total_price * check_taxes(tax_type)) + total_price
