@@ -27,7 +27,7 @@ def summary_price(data_list):
 def any_discount(day):
     if day in [28, 29, 30, 31]:
         return 0.25
-    elif day in [14, 15, 16, 17]:
+    elif day in [x for x in range(20, 28)]:
         return 0.15
     else:
         return 0
@@ -43,9 +43,9 @@ def main_program():
 
     while True:
         print(
-            "1. Mie Ayam\t\tRp12.0000\n" "2. Mie Goreng\t\tRp10.0000\n"
-            "3. Nasi Goreng\t\tRp8.0000\n" "4. Nasi Uduk\t\tRp7.0000\n"
-            "5. Es Teh\t\tRp2.0000\n"
+            "1. Mie Ayam\t\tRp12.000\n" "2. Mie Goreng\t\tRp10.000\n"
+            "3. Nasi Goreng\t\tRp8.000\n" "4. Nasi Uduk\t\tRp7.000\n"
+            "5. Es Teh\t\tRp2.000\n"
         )
 
         try:
@@ -93,8 +93,8 @@ def main_program():
     print(" (Taxes Rp.{:,})".format(check_taxes(tax_type) * old_price) if old_price >= 500000 else "")
 
     # write the total price to transaksi.txt
-    f = open("transaksi.txt", "w")
-    f.write("Total price : Rp.{:,}".format(total_price))
+    f = open("transaksi.txt", "a")
+    f.write("(Day: {}) Total price : Rp.{:,}\n".format(day, total_price))
     f.close()
     print("\n[main_program] Total price written to transaksi.txt")
 
